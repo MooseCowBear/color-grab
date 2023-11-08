@@ -16,9 +16,6 @@ export const useColors = (dependency: boolean) => {
           throw new Error("server error");
         }
         const data = await response.json();
-        // console.log(data.schemes);
-        // console.log(data.schemes[0]);
-        // console.log(data.schemes[0].colors);
         setColors(data.schemes[0].colors);
         setError("");
       } catch (err) {
