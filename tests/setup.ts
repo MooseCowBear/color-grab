@@ -9,21 +9,3 @@ expect.extend(matchers);
 afterEach(() => {
   cleanup();
 });
-
-
-// import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
-// import * as matchers from "@testing-library/jest-dom/matchers";
-// import { expect, afterEach } from "vitest";
-// import { cleanup } from "@testing-library/react";
-
-// declare module "vitest" {
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   interface Assertion<T = any>
-//     extends jest.Matchers<void, T>,
-//       TestingLibraryMatchers<T, void> {}
-// }
-
-
-// afterEach(() => {
-//   cleanup();
-// });

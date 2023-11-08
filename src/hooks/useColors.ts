@@ -6,7 +6,8 @@ export const useColors = (dependency: boolean) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("calling use effect in useColors");
+    const abortController = new AbortController();
+
     const getData = async () => {
       try {
         const url = `https://www.colr.org/json/scheme/random?query&timestamp=${new Date().getTime()}`;
@@ -26,6 +27,10 @@ export const useColors = (dependency: boolean) => {
       }
     };
     getData();
+
+    return () => {
+      abortController.abort();
+    };
   }, [dependency]);
 
   return { colors, error, loading };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Swatches from "./Swatches";
+import Swatches from "./components/Swatches";
 
 function App() {
   const [click, setClick] = useState<boolean>(false);

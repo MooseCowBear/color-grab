@@ -1,8 +1,14 @@
 import ColorSwatch from "./ColorSwatch";
-import { useColors } from "./hooks/useColors";
+import { useColors } from "../hooks/useColors";
 
 // inline typing of props
-export default function Swatches({ click, unit }: { click: boolean, unit: string }) {
+export default function Swatches({
+  click,
+  unit,
+}: {
+  click: boolean;
+  unit: string;
+}) {
   const { colors, error, loading } = useColors(click);
 
   if (error !== "") {

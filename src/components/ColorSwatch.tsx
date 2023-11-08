@@ -1,11 +1,20 @@
-import { displayHSL, displayHex, displayRGB } from "./helpers/colorSwatchHelpers";
-import { convertToRGB, convertToHSL } from "./helpers/conversions";
+import {
+  displayHSL,
+  displayHex,
+  displayRGB,
+} from "../helpers/colorSwatchHelpers";
+import { convertToRGB, convertToHSL } from "../helpers/conversions";
 
 // color is a hex string
-export default function ColorSwatch({ color, unit }: { color: string, unit: string }) {
-
+export default function ColorSwatch({
+  color,
+  unit,
+}: {
+  color: string;
+  unit: string;
+}) {
   const displayColor = (color: string, unit: string) => {
-    switch(unit) {
+    switch (unit) {
       case "hsl":
         return displayHSL(convertToHSL(color));
       case "rgb":
@@ -13,7 +22,7 @@ export default function ColorSwatch({ color, unit }: { color: string, unit: stri
       default:
         return displayHex(color);
     }
-  }
+  };
   return (
     <div className="swatch">
       <div
