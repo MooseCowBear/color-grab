@@ -4,8 +4,11 @@ interface RGB {
   g: number;
 }
 
-export const displayRGB = (rgb: RGB) => {
-  return `rgb(${rgb.r}, ${rgb.g}, ${rgb.g})`;
+export const displayRGB = (rgb: RGB | null) => {
+  if (rgb) {
+    return `rgb(${rgb.r}, ${rgb.g}, ${rgb.g})`;
+  }
+  return null;
 };
 
 interface HSL {
@@ -14,10 +17,13 @@ interface HSL {
   l: number;
 }
 
-export const displayHSL = (hsl: HSL) => {
-  return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+export const displayHSL = (hsl: HSL | null) => {
+  if (hsl) {
+    return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+  }
+  return null;
 };
 
 export const displayHex = (hex: string) => {
   return `#${hex}`;
-}
+};

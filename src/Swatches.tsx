@@ -2,7 +2,7 @@ import ColorSwatch from "./ColorSwatch";
 import { useColors } from "./hooks/useColors";
 
 // inline typing of props
-export default function Swatches({ click }: { click: boolean }) {
+export default function Swatches({ click, unit }: { click: boolean, unit: string }) {
   const { colors, error, loading } = useColors(click);
 
   if (error !== "") {
@@ -15,7 +15,7 @@ export default function Swatches({ click }: { click: boolean }) {
   return (
     <div className="swatch-container">
       {colors.map((color, index) => {
-        return <ColorSwatch key={index} color={color} />;
+        return <ColorSwatch key={index} color={color} unit={unit} />;
       })}
     </div>
   );
