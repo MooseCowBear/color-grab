@@ -11,6 +11,7 @@ function App() {
 
   return (
     <>
+      <h1>Color Grab</h1>
       <Swatches click={click} />
       <button onClick={clickHandler}>Get new colors</button>
     </>
