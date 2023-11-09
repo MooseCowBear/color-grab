@@ -44,6 +44,9 @@ describe("App", () => {
     const btn = screen.getByRole("button", { name: /switch to/i });
     await user.click(btn);
 
+    // alternatively: 
+    // await user.click(await screen.findByRole("button", { name: /switch to/i }));
+
     expect(screen.queryByText(/hsl/i));
   });
 

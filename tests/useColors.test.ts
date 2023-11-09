@@ -3,7 +3,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { useColors } from "../src/hooks/useColors";
 
 describe("useColors", () => {
-  it("should return the initial values for loading, error, colors", async () => {
+  it("should return the initial values for loading, error, colors", () => {
     vi.spyOn(window, "fetch");
     const res = renderHook(() => useColors(false));
     const { colors, error, loading } = res.result.current;
@@ -16,7 +16,6 @@ describe("useColors", () => {
     const mockData = { schemes: [{ colors: ["ffffff", "aaaaaa"] }] };
 
     vi.spyOn(window, "fetch").mockImplementationOnce(() => {
-      console.log("i am the mock");
       return Promise.resolve({
         json: () => Promise.resolve(mockData),
       } as Response);
@@ -34,8 +33,7 @@ describe("useColors", () => {
 
   it("should return an error when completes unsuccessfully", async () => {
     vi.spyOn(window, "fetch").mockImplementationOnce(() => {
-      console.log("i am the mock");
-      return Promise.reject(new Error("Async error"));
+      return Promise.reject();
     });
     const res = renderHook(() => useColors(false));
     await waitFor(() => {
@@ -47,7 +45,9 @@ describe("useColors", () => {
     });
   });
 
-  it("should abort fetch if component unmounts", async () => {
+  it("should abort fetch if component unmounts", () => {
+    vi.spyOn(window, "fetch");
+
     const abortSpy = vi.spyOn(AbortController.prototype, "abort");
     const { unmount } = renderHook(() => useColors(false));
     unmount();

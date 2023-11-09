@@ -13,7 +13,7 @@ export const useColors = (dependency: boolean) => {
         const url = `https://www.colr.org/json/scheme/random?query&timestamp=${new Date().getTime()}`;
         const response = await fetch(url, {
           mode: "cors",
-          signal: abortController.signal,
+          signal: abortController.signal, 
         });
         if (response.status >= 400) {
           console.log(response.status);
