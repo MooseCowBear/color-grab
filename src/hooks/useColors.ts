@@ -11,7 +11,10 @@ export const useColors = (dependency: boolean) => {
     const getData = async () => {
       try {
         const url = `https://www.colr.org/json/scheme/random?query&timestamp=${new Date().getTime()}`;
-        const response = await fetch(url, { mode: "cors" });
+        const response = await fetch(url, {
+          mode: "cors",
+          signal: abortController.signal,
+        });
         if (response.status >= 400) {
           console.log(response.status);
           throw new Error("server error");
@@ -29,7 +32,7 @@ export const useColors = (dependency: boolean) => {
     getData();
 
     return () => {
-      abortController.abort();
+      abortController.abort(); // cancel request if unmount
     };
   }, [dependency]);
 
