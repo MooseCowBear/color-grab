@@ -23,7 +23,6 @@ export const useColors = (dependency: boolean) => {
         setColors(data.schemes[0].colors);
         setError("");
       } catch (err) {
-        console.log(err);
         setError("Something went wrong.");
       } finally {
         setLoading(false);

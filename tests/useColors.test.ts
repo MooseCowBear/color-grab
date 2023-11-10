@@ -53,5 +53,5 @@ describe("useColors", () => {
     unmount();
 
     expect(abortSpy).toHaveBeenCalled();
-  })
+  });
 });
