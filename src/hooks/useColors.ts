@@ -23,7 +23,10 @@ export const useColors = (dependency: boolean) => {
         setColors(data.schemes[0].colors);
         setError("");
       } catch (err) {
-        setError("Something went wrong.");
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error(err);
+          setError("Something went wrong.");
+        }
       } finally {
         setLoading(false);
       }
